@@ -4,7 +4,14 @@ void main() => runApp(MaterialApp(
   home: ID(),
 ));
 
-class ID extends StatelessWidget {
+class ID extends StatefulWidget {
+  @override
+  _IDState createState() => _IDState();
+}
+
+class _IDState extends State<ID> {
+  int levelCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +93,7 @@ class ID extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              "69+",
+              "$levelCount",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30.0,
@@ -180,6 +187,18 @@ class ID extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            levelCount = levelCount+1;
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.red,
       ),
     );
   }
